@@ -1,0 +1,18 @@
+{
+  "rules": {
+    "ucapan": {
+      "$undangan": {
+        ".read": true,
+        "$id": {
+          ".write": "!data.exists()",
+          ".validate": "newData.hasChildren(['n','u','h','t'])",
+          "n": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 50" },
+          "u": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 300" },
+          "h": { ".validate": "newData.val() == 'Hadir' || newData.val() == 'Tidak Hadir' || newData.val() == 'Masih Ragu'" },
+          "t": { ".validate": "newData.isNumber()" },
+          "$lain": { ".validate": false }
+        }
+      }
+    }
+  }
+}

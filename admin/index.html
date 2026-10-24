@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Panel Admin - Tautan Tamu</title>
+<style>
+*{box-sizing:border-box}
+body{font:15px/1.6 system-ui,sans-serif;max-width:680px;margin:0 auto;padding:20px;background:#F6F3EE;color:#4A3F38}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:26px 0 6px}
+textarea,select{width:100%;padding:10px;border:1px solid #B9B09F;border-radius:10px;font:inherit;background:#fff}
+textarea{min-height:130px}
+button,a.b{display:inline-block;padding:8px 14px;border:0;border-radius:999px;background:#8B6B58;color:#fff;font:inherit;cursor:pointer;text-decoration:none;margin:2px}
+button.o{background:transparent;color:#8B6B58;border:1px solid #8B6B58}
+.item{background:#fff;border-radius:12px;padding:12px;margin-top:10px;word-break:break-all}
+small{display:block;opacity:.7}
+.chat{background:#0b141a;padding:14px;border-radius:12px;margin-top:8px}
+.wa{max-width:340px;margin-left:auto;background:#005c4b;color:#e9edef;border-radius:10px 0 10px 10px;padding:6px;font-size:14px;line-height:1.45;word-break:break-word}
+.wa .card{display:flex;gap:10px;background:#025144;border-radius:8px;overflow:hidden;margin-bottom:6px}
+.wa .card img{width:86px;height:86px;object-fit:cover;background:#2a6f63;flex:none}
+.wa .card div{padding:8px 8px 8px 0;display:flex;flex-direction:column;justify-content:center}
+.wa .card b{font-size:14px}.wa .card span{font-size:12px;opacity:.7}
+.wa .big{display:block;width:100%;height:auto;background:#2a6f63}
+.wa .txt{padding:2px 6px 4px}.lnk{color:#53bdeb;text-decoration:underline}
+details{margin-top:24px;background:#fff;border-radius:12px;padding:12px}
+.dev{display:none}body.modedev .dev{display:block}
+</style></head><body>
+<h1>Panel Admin: Tautan Tamu</h1>
+
+<div class="dev"><h2>Pilih model undangan (mode developer)</h2>
+<select id="versi"></select></div>
+
+<h2>Daftar tamu</h2>
+<p style="margin:0 0 6px">Satu tamu per baris. Format: <b>Nama</b> atau <b>Nama|08123456789</b> (nomor WhatsApp opsional).</p>
+<textarea id="daftar" placeholder="Budi Santoso&#10;Siti Aminah|081234567890"></textarea>
+<p><button id="buat" type="button">Buat Tautan</button></p>
+
+<div id="pvbox" hidden>
+  <h2>Pratinjau pesan WhatsApp (contoh tamu pertama)</h2>
+  <div class="chat"><div class="wa" id="pv"></div></div>
+</div>
+<div id="hasil"></div>
+
+<details class="dev"><summary><b>Generator meta tag (kartu pratinjau WhatsApp)</b></summary>
+  <p>Kartu pratinjau dibaca WhatsApp dari meta tag di dalam file HTML. Isi bagian <code>pratinjau</code> di <code>config.js</code>, pilih model di atas, lalu salin hasil ini ke bagian &lt;head&gt; file HTML model tersebut (ganti baris meta lama). Cara otomatis untuk semua model: <code>node tools/terapkan-meta.js</code>.</p>
+  <textarea id="meta" readonly style="min-height:210px;font:12px/1.4 monospace"></textarea>
+  <p><button id="salinMeta" type="button">Salin meta tag</button></p>
+</details>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/katalog-data.js"></script>
+<script src="admin.js"></script>
+</body></html>

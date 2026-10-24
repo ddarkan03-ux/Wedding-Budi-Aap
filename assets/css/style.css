@@ -1,0 +1,146 @@
+/* ===== Variabel warna & animasi (ubah di sini) ===== */
+:root{--cream:#F6F3EE;--sand:#E9E2D6;--taupe:#B9B09F;--brown:#8B6B58;--ink:#4A3F38;--gold:#B8935A;--gold2:#E6CC99;--d:.9s;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 15px/1.7 Poppins,system-ui,sans-serif;color:var(--ink);background:#d9d2c5;-webkit-text-size-adjust:100%}
+body.locked{overflow:hidden}
+img{display:block;max-width:100%}
+.wrap{max-width:430px;margin:0 auto;background:var(--cream);overflow-x:hidden;box-shadow:0 0 40px rgba(0,0,0,.12)}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.15}
+h2{font-size:2rem;margin-bottom:14px}
+h3{font-size:1.5rem}
+.sm{font-size:.85rem;opacity:.85}
+.sec{padding:64px 24px;text-align:center;position:relative;overflow:hidden}
+.sand{background:var(--sand)}
+.taupe{background:var(--taupe);color:#fff}
+.btn{display:inline-block;min-height:44px;padding:10px 24px;border:0;border-radius:999px;background:var(--brown);color:#fff;font:500 .85rem Poppins,sans-serif;cursor:pointer;text-decoration:none;transition:transform .2s}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent;color:var(--brown);border:1px solid var(--brown)}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--brown);outline-offset:2px}
+
+/* ===== Cover ===== */
+.cover{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--taupe)}
+.slides,.slides img,.veil,.parts{position:absolute;inset:0}
+.slides img{width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1);transition:opacity 1.5s,transform 8s linear}
+.slides img.on{opacity:1;transform:scale(1.08)}
+.veil{background:linear-gradient(to bottom,rgba(0,0,0,.05),rgba(0,0,0,.25))}
+.parts{pointer-events:none;overflow:hidden}
+.parts i{position:absolute;bottom:-10px;border-radius:50%;background:rgba(255,255,255,.8);animation:up linear infinite}
+@keyframes up{to{transform:translateY(-110vh);opacity:0}}
+.wave{position:relative;display:block;width:100%;height:46px;overflow:hidden;margin-bottom:-1px}
+.wave svg{width:200%;height:100%;animation:wv 12s linear infinite}
+@keyframes wv{to{transform:translateX(-50%)}}
+.cover-body{position:relative;background:var(--cream);padding:0 24px 36px;text-align:center}
+.cover small{letter-spacing:.18em;font-size:.72rem}
+.cover h1{font-size:2.7rem;margin:6px 0 4px}
+.guest{margin:16px 0 18px;font-size:.85rem}
+.guest b{display:block;font:600 1.25rem 'Cormorant Garamond',Georgia,serif;margin-top:2px}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+/* ===== Ornamen daun ===== */
+.leaf{position:absolute;width:34px;color:var(--taupe);opacity:.7;animation:sway 6s ease-in-out infinite alternate;pointer-events:none}
+.leaf.a{top:22px;right:20px}.leaf.b{bottom:22px;left:20px;animation-delay:-3s}
+.taupe .leaf{color:#fff;opacity:.5}
+@keyframes sway{from{transform:rotate(-4deg) translateY(0)}to{transform:rotate(4deg) translateY(6px)}}
+
+/* ===== Hitung mundur ===== */
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:20px}
+.cd div{background:rgba(255,255,255,.22);border-radius:14px;padding:12px 4px}
+.cd b{display:block;font:600 1.7rem 'Cormorant Garamond',Georgia,serif}
+.cd small{font-size:.7rem}
+
+/* ===== Mempelai ===== */
+.mp{margin-bottom:34px}
+.amp{font:italic 600 2rem 'Cormorant Garamond',Georgia,serif;color:var(--brown);margin-bottom:30px}
+
+/* ===== Love story ===== */
+.story{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px;margin-bottom:24px}
+.ls{margin-bottom:22px}
+.ls:last-child{margin-bottom:0}
+.ls p{font-size:.9rem}
+
+/* ===== Akad & Resepsi ===== */
+
+/* ===== Kartu kaca ===== */
+.glass{background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-radius:20px;padding:26px 20px;color:var(--ink)}
+.glass p{margin-bottom:16px;font-size:.9rem}
+
+/* ===== Galeri ===== */
+.gal{columns:2;column-gap:10px}
+.gal img{width:100%;margin-bottom:10px;border-radius:12px;cursor:pointer;break-inside:avoid;object-fit:cover}
+.gal img:nth-child(odd){aspect-ratio:3/4}.gal img:nth-child(even){aspect-ratio:1/1}
+.lb{position:fixed;inset:0;background:rgba(20,15,10,.92);display:none;align-items:center;justify-content:center;z-index:50;opacity:0;transition:opacity .3s}
+.lb.open{display:flex;opacity:1}
+.lb img{max-width:92vw;max-height:80vh;border-radius:8px}
+.lb button{position:absolute;background:none;border:0;color:#fff;font-size:34px;padding:12px;cursor:pointer}
+.lb .x{top:10px;right:14px}.lb .p{left:6px}.lb .n{right:6px}
+
+/* ===== Wedding gift (selalu rata tengah) ===== */
+.acc{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.acc.open{grid-template-rows:1fr}
+.acc>div{overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.acc.open>div{padding-top:6px}
+.bank{width:100%;max-width:300px;background:#fff;border-radius:16px;padding:16px 18px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:10px;box-shadow:0 4px 14px rgba(74,63,56,.12)}
+.bank b{display:block;font-size:1.05rem;letter-spacing:.04em}
+.bank small{display:block;font-size:.75rem;opacity:.8}
+.bank .btn{min-height:36px;padding:6px 14px}
+
+/* ===== Form RSVP ===== */
+form{display:flex;flex-direction:column;gap:10px;text-align:left}
+input,select,textarea{width:100%;padding:12px 14px;border:1px solid var(--taupe);border-radius:12px;background:#fff;font:400 .9rem Poppins,sans-serif;color:var(--ink)}
+textarea{min-height:90px;resize:vertical}
+.msg{background:#fff;color:var(--ink);border-radius:14px;padding:12px 14px;margin-top:10px;text-align:left}
+.msg p{font-size:.88rem;margin:2px 0}
+.msg small{font-size:.72rem;opacity:.7}
+.ok{color:#3f8a5a}.no{color:#b3563f}.rg{color:#a08a3a}
+
+/* ===== Penutup, musik, toast ===== */
+.closing img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:20px;margin:20px 0}
+.music{position:fixed;right:max(14px,calc(50% - 201px));bottom:calc(14px + env(safe-area-inset-bottom,0px));width:44px;height:44px;border-radius:50%;border:0;background:var(--brown);color:#fff;font-size:18px;z-index:20;display:none;cursor:pointer}
+.music.show{display:block;animation:pop .5s var(--ease)}
+.music.on{animation:spin 7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.toast{position:fixed;left:50%;bottom:80px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:.82rem;opacity:0;pointer-events:none;transition:.3s;z-index:60}
+.toast.show{opacity:1;transform:translateX(-50%)}
+
+/* ===== Sistem animasi: data-anim="fade-up|fade-down|fade-left|fade-right|zoom-in|blur-in" ===== */
+.js [data-anim]{opacity:0;transition:opacity var(--d) var(--ease),transform var(--d) var(--ease),filter var(--d) var(--ease)}
+.js [data-anim=fade-up]{transform:translateY(28px)}
+.js [data-anim=fade-down]{transform:translateY(-28px)}
+.js [data-anim=fade-left]{transform:translateX(-36px)}
+.js [data-anim=fade-right]{transform:translateX(36px)}
+.js [data-anim=zoom-in]{transform:scale(.92)}
+.js [data-anim=blur-in]{filter:blur(8px)}
+.js [data-anim].is-visible{opacity:1;transform:none;filter:none}
+.no-anim [data-anim]{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
+.no-anim .leaf,.no-anim .wave svg,.no-anim .parts i{animation:none!important}
+.no-anim .slides img.on{transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js [data-anim]{opacity:1;transform:none;filter:none}.slides img.on{transform:none}}
+
+/* ===== Turut mengundang ===== */
+.tm{margin-top:16px}
+.tm p{font:600 1.15rem/1.4 'Cormorant Garamond',Georgia,serif;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--taupe)}
+.tm p:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+
+/* ===== Bingkai foto pengantin: minimalis, garis offset ===== */
+.mp{margin-bottom:40px}
+.ph{position:relative;width:220px;margin:0 auto 32px}
+.ph::before{content:"";position:absolute;inset:0;border:1.5px solid var(--brown);border-radius:28px;transform:translate(12px,12px)}
+.mp.alt .ph::before{transform:translate(-12px,12px)}
+.ph-in{position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:#fff;box-shadow:0 14px 30px rgba(74,63,56,.18)}
+.ph-in img{width:100%;height:100%;object-fit:cover}
+.mp h3{font-size:2.1rem;margin-bottom:4px}
+.amp{margin-bottom:34px}
+
+/* ===== Kartu acara: blok tanggal kiri + teks rata kiri ===== */
+.ev{display:grid;grid-template-columns:104px 1fr;max-width:340px;margin:0 auto 18px;background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 12px 30px rgba(74,63,56,.12);text-align:left}
+.ev-d{background:var(--brown);color:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:20px 8px;text-align:center}
+.ev-d small{font-size:.66rem;letter-spacing:.12em;opacity:.85}
+.ev-d b{font:600 3.1rem/1 'Cormorant Garamond',Georgia,serif}
+.ev-d span{font-size:.82rem;letter-spacing:.14em}
+.ev-i{padding:22px 20px}
+.ev-i h3{font-size:1.75rem;margin-bottom:8px}
+.ev-i .t{display:inline-block;font-size:.78rem;padding:2px 12px;border-radius:999px;background:var(--sand);margin-bottom:12px}
+.ev-i p{font-size:.86rem;line-height:1.55;margin-bottom:14px}
+.ev-i .btn{min-height:38px;padding:8px 18px}

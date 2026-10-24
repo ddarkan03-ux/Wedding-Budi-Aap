@@ -1,0 +1,23 @@
+FOLDER INI = SATU PROYEK MANDIRI (satu undangan, satu repo GitHub)
+
+YANG DIEDIT (di VS Code):
+  assets/js/config.js  -> nama mempelai, acara, foto, musik, rekening, idUndangan,
+                          baseUrl (alamat situs GitHub Pages), firebaseUrl
+  assets/img/          -> ganti foto (nama file harus sama)
+  assets/img/og.jpg    -> foto pratinjau WhatsApp: 600x600 px, di bawah 200 KB
+
+WAJIB DIGANTI SEBELUM DIPUBLIKASI:
+  1. baseUrl di config.js  -> isi dengan alamat dari GitHub: Settings > Pages
+     contoh: "https://ddarkan03-ux.github.io/nama-repo-anda"   (tanpa garis miring di akhir)
+  2. idUndangan di config.js -> harus unik per client (huruf kecil, angka, tanda hubung)
+  3. Jalankan:  node tools/terapkan-meta.js
+     (otomatis memperbarui meta tag index.html sesuai baseUrl)
+
+UPLOAD KE GITHUB:
+  Upload ISI folder ini (index.html, assets, admin, dst), BUKAN foldernya.
+  Halaman depan repo harus langsung menampilkan index.html.
+
+ALAMAT SETELAH ONLINE:
+  Undangan : https://ddarkan03-ux.github.io/nama-repo-anda/
+  Admin    : https://ddarkan03-ux.github.io/nama-repo-anda/admin/        (untuk client)
+  Admin dev: https://ddarkan03-ux.github.io/nama-repo-anda/admin/?dev    (untuk Anda)
