@@ -11,6 +11,15 @@ window.CONFIG = {
   nomorWhatsAppClient: "6285716300907",      // format 62xxxx, tanpa + dan tanpa 0 di depan
   halamanUndangan: "",                       // "" = Versi 1 (index.html); "versi-2.html" sampai "versi-7.html" = versi lain
   fileMusik: "assets/audio/musik.mp3",        // kosongkan "" bila tanpa musik
+  /* Firebase Authentication untuk panel admin.
+     Isi dari Project settings > General > Your apps. Jangan isi dengan sandi. */
+  firebaseAuth: {
+    apiKey: "AIzaSyBEA92p-xAjSyvDTWT09-zsuEDyjZg2dZw",
+    authDomain: "undangan-saya.firebaseapp.com",
+    projectId: "undangan-saya",
+    appId: "1:996120910513:web:5df1e68b5e496fd899e090"
+  },
+  adminEmail: "darkan@admin.undangan",                            // hanya akun dengan email ini yang boleh membuka panel admin
 
   /* === PENGATURAN TAMPILAN === */
   pengaturan: {

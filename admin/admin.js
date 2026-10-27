@@ -3,6 +3,83 @@
   'use strict';
   var C = window.CONFIG || {}, K = window.KATALOG || [], P = C.pratinjau || {};
   var $ = function (s) { return document.querySelector(s); };
+  var login = $('#login'), panel = $('#admin-panel'), form = $('#login-form');
+  var status = $('#login-status'), loginButton = $('#login-button');
+  var authConfig = C.firebaseAuth || {};
+  var adminEmail = String(C.adminEmail || '').trim().toLowerCase();
+  var requiredConfig = ['apiKey', 'authDomain', 'projectId', 'appId'];
+  var configured = requiredConfig.every(function (key) {
+    return typeof authConfig[key] === 'string' && authConfig[key].trim() !== '';
+  });
+
+  function showLogin(message) {
+    login.hidden = false;
+    panel.hidden = true;
+    status.textContent = message || '';
+  }
+
+  if (!configured || !adminEmail) {
+    loginButton.disabled = true;
+    showLogin('Konfigurasi Firebase belum lengkap. Isi firebaseAuth dan adminEmail di assets/js/config.js.');
+    return;
+  }
+  if (!window.firebase || !firebase.auth) {
+    loginButton.disabled = true;
+    showLogin('Firebase Authentication tidak dapat dimuat. Periksa koneksi internet lalu muat ulang halaman.');
+    return;
+  }
+
+  var app = firebase.apps.length ? firebase.app() : firebase.initializeApp(authConfig);
+  var auth = app.auth();
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    loginButton.disabled = true;
+    status.textContent = 'Memeriksa akun...';
+    auth.signInWithEmailAndPassword($('#email').value.trim(), $('#password').value)
+      .then(function () { $('#password').value = ''; })
+      .catch(function (error) {
+        var messages = {
+          'auth/invalid-email': 'Format email tidak valid.',
+          'auth/user-disabled': 'Akun ini dinonaktifkan.',
+          'auth/user-not-found': 'Email atau kata sandi salah.',
+          'auth/wrong-password': 'Email atau kata sandi salah.',
+          'auth/invalid-credential': 'Email atau kata sandi salah.',
+          'auth/too-many-requests': 'Terlalu banyak percobaan. Coba lagi nanti.'
+        };
+        showLogin(messages[error.code] || 'Gagal masuk: ' + error.message);
+      })
+      .then(function () { loginButton.disabled = false; });
+  });
+
+  $('#logout').addEventListener('click', function () {
+    auth.signOut().catch(function (error) {
+      showLogin('Gagal keluar: ' + error.message);
+    });
+  });
+
+  auth.onAuthStateChanged(function (user) {
+    if (!user) {
+      loginButton.disabled = false;
+      showLogin('');
+      return;
+    }
+    if (String(user.email || '').trim().toLowerCase() !== adminEmail) {
+      auth.signOut().then(function () {
+        showLogin('Akun ini tidak diizinkan membuka panel admin.');
+      }).catch(function (error) {
+        showLogin('Akun tidak diizinkan dan gagal dikeluarkan: ' + error.message);
+      });
+      return;
+    }
+    login.hidden = true;
+    panel.hidden = false;
+    startAdmin();
+  });
+
+  var started = false;
+  function startAdmin() {
+    if (started) return;
+    started = true;
   /* Mode developer: buka /admin/?dev untuk menampilkan pilihan model & generator meta tag. Client cukup buka /admin/ */
   if (/[?&]dev(=|&|$)/.test(location.search)) document.body.classList.add('modedev');
   var base = String(C.baseUrl || location.origin).replace(/\/+$/, '');
@@ -91,4 +168,5 @@
   function isiMeta() { $('#meta').value = meta(); }
   sel.addEventListener('change', isiMeta); isiMeta();
   $('#salinMeta').addEventListener('click', function (e) { salin($('#meta').value, e.target); });
+  }
 })();

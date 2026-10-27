@@ -23,8 +23,25 @@ small{display:block;opacity:.7}
 .wa .txt{padding:2px 6px 4px}.lnk{color:#53bdeb;text-decoration:underline}
 details{margin-top:24px;background:#fff;border-radius:12px;padding:12px}
 .dev{display:none}body.modedev .dev{display:block}
+.auth{background:#fff;border-radius:12px;padding:16px;margin-top:18px}
+.auth input{width:100%;padding:10px;border:1px solid #B9B09F;border-radius:10px;font:inherit;margin:4px 0 12px}
+.auth p{margin:8px 0}
 </style></head><body>
+<section class="auth" id="login">
+  <h1>Masuk ke Panel Admin</h1>
+  <form id="login-form">
+    <label for="email">Email admin</label>
+    <input id="email" name="email" type="email" autocomplete="username" required>
+    <label for="password">Kata sandi</label>
+    <input id="password" name="password" type="password" autocomplete="current-password" required>
+    <button id="login-button" type="submit">Masuk</button>
+  </form>
+  <p id="login-status" role="status" aria-live="polite"></p>
+</section>
+
+<main id="admin-panel" hidden>
 <h1>Panel Admin: Tautan Tamu</h1>
+<button id="logout" type="button" class="o">Keluar</button>
 
 <div class="dev"><h2>Pilih model undangan (mode developer)</h2>
 <select id="versi"></select></div>
@@ -45,8 +62,11 @@ details{margin-top:24px;background:#fff;border-radius:12px;padding:12px}
   <textarea id="meta" readonly style="min-height:210px;font:12px/1.4 monospace"></textarea>
   <p><button id="salinMeta" type="button">Salin meta tag</button></p>
 </details>
+</main>
 
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/katalog-data.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="admin.js"></script>
 </body></html>
