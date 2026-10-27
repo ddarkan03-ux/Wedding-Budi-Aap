@@ -19,7 +19,7 @@ window.CONFIG = {
     projectId: "undangan-saya",
     appId: "1:996120910513:web:5df1e68b5e496fd899e090"
   },
-  adminEmail: "darkan@admin.undangan",                            // hanya akun dengan email ini yang boleh membuka panel admin
+  kode: "darkan",                             // kode admin; akun Firebase memakai email darkan@admin.undangan
 
   /* === PENGATURAN TAMPILAN === */
   pengaturan: {

@@ -1,7 +1,29 @@
 /* Logika undangan. Semua data diambil dari config.js - tidak perlu diedit. */
-(function () {
+(async function () {
   'use strict';
-  var C = window.CONFIG || {}, P = C.pengaturan || {}, B = C.bagian || {};
+  var C = window.CONFIG || {};
+  if (window.applyAdminSettings) {
+    var remoteDb = String((C.ucapanOnline || {}).firebaseUrl || '').replace(/\/+$/, '');
+    var remoteId = String(C.idUndangan || 'undangan').toLowerCase().replace(/[^a-z0-9-]/g, '') || 'undangan';
+    if (/^https:\/\//.test(remoteDb)) {
+      var timeout;
+      try {
+        var controller = new AbortController();
+        timeout = setTimeout(function () { controller.abort(); }, 5000);
+        var response = await fetch(remoteDb + '/pengaturan/' + encodeURIComponent(remoteId) + '.json', { signal: controller.signal });
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        C = window.applyAdminSettings(C, await response.json());
+      } catch (error) {
+        console.error('Gagal memuat pengaturan online; pengaturan browser/default digunakan.', error);
+        C = window.applyAdminSettings(C);
+      } finally {
+        clearTimeout(timeout);
+      }
+    } else {
+      C = window.applyAdminSettings(C);
+    }
+  }
+  var P = C.pengaturan || {}, B = C.bagian || {};
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var e = function (s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (m) {
