@@ -105,6 +105,35 @@ h3{font-size:1.5rem}
 .bank b{display:block;font-size:1.05rem;letter-spacing:.04em}
 .bank small{display:block;font-size:.75rem;opacity:.8}
 .bank .btn{min-height:36px;padding:6px 14px}
+/* tema kartu rekening per bank (adaptif v2) */
+/* hanya warna, motif & logo: ukuran, jarak, huruf & sudut mengikuti template */
+.bank[data-bk]{color:var(--bt);background:var(--pt),linear-gradient(140deg,var(--b1),var(--b2));position:relative;overflow:hidden}
+.bank[data-bk] b,.bank[data-bk] span,.bank[data-bk] small{color:var(--bt)}
+.bank[data-bk] b.lgp{display:flex;align-items:center;width:fit-content;max-width:100%;background:#fff;border-radius:.3em;padding:0 .55em;height:1.6em;letter-spacing:0;margin-bottom:2px}
+.bank b.lgp .lg{display:block;height:72%;width:auto;max-width:7.5em}
+.bank[data-bk] .btn,.bank[data-bk] .btn.ghost{color:var(--bt)!important;border-color:var(--ba)!important;background:rgba(255,255,255,.16)}
+[data-bk=bca]{--b1:#0060AF;--b2:#00437d;--bt:#fff;--ba:#8cc0f2;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2260%22%20height=%2224%22%3E%3Cpath%20d=%22M0%2012%20Q15%200%2030%2012%20T60%2012%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=bri]{--b1:#0857C3;--b2:#053b88;--bt:#fff;--ba:#f7941d;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2228%22%20height=%2228%22%3E%3Cpath%20d=%22M14%201%2027%2014%2014%2027%201%2014Z%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=bni]{--b1:#005E6A;--b2:#003f48;--bt:#fff;--ba:#f26f21;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2222%22%20height=%2222%22%3E%3Cpath%20d=%22M-2%2024%2024-2M-2%2013%2013-2M9%2024%2024%209%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=mandiri]{--b1:#003A70;--b2:#00264d;--bt:#fff;--ba:#fcb017;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2236%22%20height=%2218%22%3E%3Cpath%20d=%22M0%204%2018%2016%2036%204%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=bsi]{--b1:#00A39D;--b2:#006f6b;--bt:#fff;--ba:#f8ad3c;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2240%22%20height=%2240%22%3E%3Cpath%20d=%22M20%203%2025%2015%2037%2020%2025%2025%2020%2037%2015%2025%203%2020%2015%2015Z%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=cimb]{--b1:#790008;--b2:#4d0005;--bt:#fff;--ba:#ed3024;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2234%22%20height=%2230%22%3E%3Cpath%20d=%22M9%201h16l8%2014-8%2014H9L1%2015Z%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=permata]{--b1:#0064FF;--b2:#003fa8;--bt:#fff;--ba:#9cc2ff;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2240%22%20height=%2240%22%3E%3Ccircle%20cx=%2220%22%20cy=%2220%22%20r=%2216%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3Ccircle%20cx=%2220%22%20cy=%2220%22%20r=%228%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=btn]{--b1:#015BFD;--b2:#0140b0;--bt:#fff;--ba:#ff8a8a;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2222%22%20height=%2222%22%3E%3Cpath%20d=%22M-2%2024%2024-2M-2%2013%2013-2M9%2024%2024%209%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=danamon]{--b1:#046148;--b2:#033f2f;--bt:#fff;--ba:#ef9826;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2228%22%20height=%2228%22%3E%3Cpath%20d=%22M14%201%2027%2014%2014%2027%201%2014Z%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=jago]{--b1:#FDAF27;--b2:#e89610;--bt:#2b2b2b;--ba:#2b2b2b;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2218%22%20height=%2218%22%3E%3Ccircle%20cx=%229%22%20cy=%229%22%20r=%222%22%20fill=%22%232b2b2b%22%20fill-opacity=%220.18000000000000002%22/%3E%3C/svg%3E")}
+[data-bk=seabank]{--b1:#EA5F00;--b2:#c24a00;--bt:#fff;--ba:#ffd3ba;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2260%22%20height=%2224%22%3E%3Cpath%20d=%22M0%2012%20Q15%200%2030%2012%20T60%2012%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=dana]{--b1:#008CEB;--b2:#0067b0;--bt:#fff;--ba:#c3e4ff;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2240%22%20height=%2240%22%3E%3Ccircle%20cx=%2220%22%20cy=%2220%22%20r=%2216%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3Ccircle%20cx=%2220%22%20cy=%2220%22%20r=%228%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=ovo]{--b1:#5827D4;--b2:#3d1a96;--bt:#fff;--ba:#cdb8f2;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2218%22%20height=%2218%22%3E%3Ccircle%20cx=%229%22%20cy=%229%22%20r=%222%22%20fill=%22%23fff%22%20fill-opacity=%220.18000000000000002%22/%3E%3C/svg%3E")}
+[data-bk=gopay]{--b1:#00AED6;--b2:#007aa6;--bt:#fff;--ba:#a5ebf8;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2240%22%20height=%2240%22%3E%3Ccircle%20cx=%2220%22%20cy=%2220%22%20r=%2216%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3Ccircle%20cx=%2220%22%20cy=%2220%22%20r=%228%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=shopeepay]{--b1:#E8451E;--b2:#bf3112;--bt:#fff;--ba:#ffc6b8;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2222%22%20height=%2222%22%3E%3Cpath%20d=%22M-2%2024%2024-2M-2%2013%2013-2M9%2024%2024%209%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=linkaja]{--b1:#E82529;--b2:#b0151a;--bt:#fff;--ba:#ffb8ba;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2236%22%20height=%2218%22%3E%3Cpath%20d=%22M0%204%2018%2016%2036%204%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=jenius]{--b1:#00A4DE;--b2:#0078a8;--bt:#fff;--ba:#b3efff;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2260%22%20height=%2224%22%3E%3Cpath%20d=%22M0%2012%20Q15%200%2030%2012%20T60%2012%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=maybank]{--b1:#FFC600;--b2:#e5a900;--bt:#231F20;--ba:#231F20;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2222%22%20height=%2222%22%3E%3Cpath%20d=%22M-2%2024%2024-2M-2%2013%2013-2M9%2024%2024%209%22%20fill=%22none%22%20stroke=%22%23231F20%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=ocbc]{--b1:#D10A10;--b2:#9c070c;--bt:#fff;--ba:#ffb3b8;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2228%22%20height=%2228%22%3E%3Cpath%20d=%22M14%201%2027%2014%2014%2027%201%2014Z%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=bjb]{--b1:#1B517E;--b2:#103554;--bt:#fff;--ba:#f2c94c;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2260%22%20height=%2224%22%3E%3Cpath%20d=%22M0%2012%20Q15%200%2030%2012%20T60%2012%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
+[data-bk=neo]{--b1:#FFBE00;--b2:#e0a000;--bt:#1a1a1a;--ba:#1a1a1a;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2218%22%20height=%2218%22%3E%3Ccircle%20cx=%229%22%20cy=%229%22%20r=%222%22%20fill=%22%231a1a1a%22%20fill-opacity=%220.18000000000000002%22/%3E%3C/svg%3E")}
+[data-bk=muamalat]{--b1:#420655;--b2:#2b0437;--bt:#fff;--ba:#6fbd62;--pt:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2240%22%20height=%2240%22%3E%3Cpath%20d=%22M20%203%2025%2015%2037%2020%2025%2025%2020%2037%2015%2025%203%2020%2015%2015Z%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-opacity=%220.14%22%20stroke-width=%221.4%22/%3E%3C/svg%3E")}
 
 /* ===== Form RSVP ===== */
 form{display:flex;flex-direction:column;gap:10px;text-align:left}
@@ -225,7 +254,11 @@ textarea{min-height:90px;resize:vertical}
   var pr = D.pria || {}, wn = D.wanita || {}, F = D.foto || {};
   var ak = D.akad || null, rs = D.resepsi || null, utama = ak || rs;
   var PANG = pr.panggilan || 'Mempelai Pria', WANG = wn.panggilan || 'Mempelai Wanita';
-  var NAMA = PANG + ' & ' + WANG;
+  var URUT_URL = (new URLSearchParams(location.search).get('urut') || '').toLowerCase();
+  var WF = (URUT_URL === 'wanita' || URUT_URL === 'pria') ? URUT_URL === 'wanita' : (D.pihakKlien || D.urutanNama) === 'wanita';
+  var N1, N2, NAMA;
+  function ord() { N1 = WF ? WANG : PANG; N2 = WF ? PANG : WANG; NAMA = N1 + ' & ' + N2; }
+  ord();
   var S = { ucapanPublik: D.ucapanPublik !== false, turut: !!D.turutMengundangTampil, rek: [true, true] };
 
   /* Teks tetap model ini */
@@ -243,7 +276,7 @@ textarea{min-height:90px;resize:vertical}
   function mempelai(o, foto, putra, i) {
     var anak = putra ? (o.putraKe ? 'Putra ke-' + o.putraKe : 'Putra') : (o.putriKe ? 'Putri ke-' + o.putriKe : 'Putri');
     var ig = String(o.instagram || '').replace(/^@/, '');
-    return '<div class="mp' + (i % 2 ? ' alt' : '') + '" ' + A(i % 2 ? 'fade-right' : 'fade-left') + '>' +
+    return '<div class="mp' + (i % 2 ? ' alt' : '') + '" data-g="' + (putra ? 'p' : 'w') + '" ' + A(i % 2 ? 'fade-right' : 'fade-left') + '>' +
       '<div class="ph"><div class="ph-in">' + img(foto, o.nama, 'loading="lazy"') + '</div></div>' +
       '<h3>' + e(o.nama) + '</h3><p class="sm">' + e(anak) + ' dari</p>' +
       '<p class="sm">Bapak ' + e(o.ayah) + ' &amp; Ibu ' + e(o.ibu) + '</p>' +
@@ -262,8 +295,9 @@ textarea{min-height:90px;resize:vertical}
       (maps ? '<a class="btn" href="' + e(a.maps) + '" target="_blank" rel="noopener">Lihat Maps</a>' : '') + '</div></div>';
   }
 
+  function bk(n){var x=String(n||'').toLowerCase().replace(/[^a-z0-9]/g,'').replace(/^bank/,''),M=[['bca',/^(bca|centralasia)/],['bri',/^(bri|rakyatindonesia)/],['bni',/^(bni|negaraindonesia)/],['mandiri',/^mandiri/],['bsi',/^(bsi|syariahindonesia)/],['cimb',/^cimb/],['permata',/^permata/],['btn',/^(btn|tabungannegara)/],['danamon',/^danamon/],['jago',/^jago/],['seabank',/^seabank/],['dana',/^dana$/],['ovo',/^ovo$/],['gopay',/^gopay/],['shopeepay',/^(shopeepay|spay)/],['linkaja',/^linkaja/],['jenius',/^(jenius|btpn)/],['maybank',/^maybank/],['ocbc',/^ocbc/],['bjb',/^bjb/],['neo',/^neo/],['muamalat',/^muamalat/]];for(var i=0;i<M.length;i++)if(M[i][1].test(x))return M[i][0];return''}
   function bank(r, i) {
-    return '<div class="bank" data-r="' + i + '"><div><b>' + e(r.bank) + '</b><span>' + e(r.nomor) + '</span><small>a.n. ' + e(r.atasNama) + '</small></div>' +
+    return '<div class="bank" data-r="' + i + '"' + (bk(r.bank) ? ' data-bk="' + bk(r.bank) + '"' : '') + '><div><b' + ((D.logoBank !== false && bk(r.bank)) ? ' class="lgp"' : '') + '>' + ((D.logoBank !== false && bk(r.bank)) ? '<img class="lg" src="foto/bank/' + bk(r.bank) + '.svg" alt="' + e(r.bank) + '" onerror="var p=this.parentNode;p.classList.remove(\'lgp\');p.textContent=this.alt">' : e(r.bank)) + '</b><span>' + e(r.nomor) + '</span><small>a.n. ' + e(r.atasNama) + '</small></div>' +
       '<button type="button" class="btn ghost" data-copy="' + e(r.nomor) + '">Salin</button></div>';
   }
 
@@ -279,7 +313,7 @@ textarea{min-height:90px;resize:vertical}
     '</div><div class="veil"></div><div class="parts"></div>' +
     '<div class="wave"><svg viewBox="0 0 2400 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0 23C300 0 600 46 1200 23C1500 0 1800 46 2400 23V46H0Z" fill="#F6F3EE"/></svg></div>' +
     '<div class="cover-body"><small ' + A('fade-up') + '>THE WEDDING OF</small>' +
-    '<h1 ' + A('fade-up', 150) + '>' + e(PANG) + ' &amp; ' + e(WANG) + '</h1>' +
+    '<h1 id="namaSampul" ' + A('fade-up', 150) + '>' + e(N1) + ' &amp; ' + e(N2) + '</h1>' +
     '<p class="sm" ' + A('fade-up', 300) + '>' + e(tglPanjang(utama)) + '</p>' +
     '<p class="guest" ' + A('fade-up', 450) + '>Kepada Yth. Bapak/Ibu/Saudara/i<b id="guest"></b></p>' +
     '<div class="row" ' + A('fade-up', 600) + '><button type="button" class="btn" id="buka">Buka Undangan</button><a class="btn ghost" id="sdate" href="#" target="_blank" rel="noopener" hidden>Save The Date</a></div></div></section>';
@@ -290,7 +324,7 @@ textarea{min-height:90px;resize:vertical}
       '<div class="cd" id="cd" ' + A('zoom-in', 200) + '>' + ['Hari', 'Jam', 'Menit', 'Detik'].map(function (l) { return '<div><b>00</b><small>' + l + '</small></div>'; }).join('') + '</div></section>';
   }
 
-  var urut = ['wanita', 'pria'];
+  var urut = WF ? ['wanita', 'pria'] : ['pria', 'wanita'];
   h += '<section class="sec">' + leaf('b') + urut.map(function (k, i) {
     return (k === 'pria' ? mempelai(pr, F.pria, true, i) : mempelai(wn, F.wanita, false, i)) + (i < urut.length - 1 ? '<div class="amp" ' + A('fade-up') + '>&amp;</div>' : '');
   }).join('') + '</section>';
@@ -345,7 +379,7 @@ textarea{min-height:90px;resize:vertical}
 
   h += '<section class="sec closing">' + leaf('a') + '<p class="sm" ' + A('fade-up') + '>' + e(T_PENUTUP) + '</p>' +
     img(F.penutup, 'Foto penutup', 'loading="lazy" ' + A('blur-in')) +
-    '<h2 ' + A('fade-up') + '>Terima kasih</h2><h3 ' + A('fade-up', 100) + '>' + e(PANG) + ' &amp; ' + e(WANG) + '</h3>' +
+    '<h2 ' + A('fade-up') + '>Terima kasih</h2><h3 id="namaPenutup" ' + A('fade-up', 100) + '>' + e(N1) + ' &amp; ' + e(N2) + '</h3>' +
     (D.catatan ? '<p class="sm" ' + A('fade-up', 150) + '>' + e(D.catatan) + '</p>' : '') +
     '<p class="sm" ' + A('fade-up', 200) + '>Kami yang berbahagia, Keluarga Besar ' + e((D.pemesan && D.pemesan.nama) || NAMA) + '</p></section>';
 
@@ -535,6 +569,22 @@ textarea{min-height:90px;resize:vertical}
     var hs = $('#hadiah'); if (hs) hs.style.display = (vis || D.alamatKado) ? '' : 'none';
     var tm = $('#turut'); if (tm) tm.style.display = S.turut ? '' : 'none';
   }
+  function terapkanUrutan(w) {
+    if (w === WF) return;
+    var lama = NAMA; WF = w; ord();
+    var a = $('#namaSampul'); if (a) a.textContent = NAMA;
+    a = $('#namaPenutup'); if (a) a.textContent = NAMA;
+    var mp = [].slice.call(document.querySelectorAll('.mp[data-g]'));
+    var gp = mp.filter(function (x) { return x.getAttribute('data-g') === 'p'; })[0], gw = mp.filter(function (x) { return x.getAttribute('data-g') === 'w'; })[0];
+    var amp = gp && gp.parentNode.querySelector('.amp');
+    if (gp && gw && amp) {
+      var par = amp.parentNode, aw = WF ? [gw, gp] : [gp, gw];
+      par.insertBefore(aw[0], amp); par.insertBefore(aw[1], amp.nextSibling);
+      aw.forEach(function (x, i) { x.classList.toggle('alt', i % 2 === 1); x.setAttribute('data-anim', i % 2 ? 'fade-right' : 'fade-left'); });
+    }
+    var sd = $('#sdate');
+    if (sd && sd.getAttribute('href') !== '#') sd.setAttribute('href', sd.getAttribute('href').split(encodeURIComponent('Pernikahan ' + lama)).join(encodeURIComponent('Pernikahan ' + NAMA)));
+  }
   function muatPengaturan() {
     if (!FB.aktif) return Promise.resolve();
     return FB.pengaturan().then(function (p) {
@@ -543,6 +593,7 @@ textarea{min-height:90px;resize:vertical}
       if (typeof p.turutTampil === 'boolean') S.turut = p.turutTampil;
       if (typeof p.rekening1 === 'boolean') S.rek[0] = p.rekening1;
       if (typeof p.rekening2 === 'boolean') S.rek[1] = p.rekening2;
+      if (!URUT_URL && (p.urutNama === 'pria' || p.urutNama === 'wanita')) terapkanUrutan(p.urutNama === 'wanita');
     }).catch(function () { });
   }
 

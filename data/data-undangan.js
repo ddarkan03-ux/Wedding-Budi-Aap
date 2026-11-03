@@ -76,16 +76,26 @@ window.DATA = {
   ],
   "hadiah": [
     {
-      "bank": "BCA",
+      "bank": "BRI",
       "nomor": "1234567890",
       "atasNama": "Budiyanto"
     },
     {
-      "bank": "DANA",
+      "bank": "GOPAY",
       "nomor": "777777777777",
       "atasNama": "Neng Aap"
     }
   ],
+  "logoBank": true,
+  "pihakKlien": "pria",
+  "panelAdmin": {
+    "ucapanPublik": true,
+    "turutMengundang": true,
+    "rekening": true,
+    "urutanNama": true,
+    "pesanWa": true,
+    "pratinjauLink": true
+  },
   "alamatKado": "Neng Aap (085716300907) - Alamat lengkap pengiriman hadiah",
   "turutMengundangTampil": true,
   "turutMengundang": [

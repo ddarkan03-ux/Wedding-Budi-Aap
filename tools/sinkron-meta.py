@@ -81,6 +81,8 @@ def main():
     d = baca_data()
     p, w = d.get('pria', {}), d.get('wanita', {})
     nama = '%s & %s' % (p.get('panggilan', ''), w.get('panggilan', ''))
+    if (d.get('pihakKlien') or d.get('urutanNama')) == 'wanita':
+        nama = '%s & %s' % (w.get('panggilan', ''), p.get('panggilan', ''))
     ev = d.get('resepsi') or d.get('akad') or {}
     ak = d.get('akad') or ev
     tanggal = tgl(ak['tanggal']) if ak.get('tanggal') else ''

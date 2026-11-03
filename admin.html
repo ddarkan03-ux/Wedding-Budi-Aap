@@ -87,19 +87,20 @@ label.l{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercas
   <div id="pUcapan" class="hide"><div class="card" id="sumU"></div><div class="card" id="lUcapan"></div></div>
 
   <div id="pSet" class="hide">
-   <div class="card">
-    <div class="sw"><span>Tampilkan ucapan ke tamu lain</span><input type="checkbox" id="cUp"></div>
+   <div class="card" id="cSw">
+    <div class="sw" id="rUp"><span>Tampilkan ucapan ke tamu lain</span><input type="checkbox" id="cUp"></div>
     <div class="sw" id="rTm"><span>Tampilkan "Turut Mengundang"</span><input type="checkbox" id="cTm"></div>
     <div class="sw" id="rR1"><span>Tampilkan rekening 1</span><input type="checkbox" id="cR1"></div>
     <div class="sw" id="rR2"><span>Tampilkan rekening 2</span><input type="checkbox" id="cR2"></div>
+    <div class="sw" id="rUr"><span>Klien (pemesan) dari pihak<br><small style="color:var(--mut)">Nama pihak klien tampil lebih dulu</small></span><select id="cUr" style="padding:7px 10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff"><option value="pria">Pria</option><option value="wanita">Wanita</option></select></div>
    </div>
-   <div class="card">
+   <div class="card" id="cPs">
     <label class="l" for="ps" style="margin-top:0">Pesan undangan</label>
     <textarea id="ps" style="min-height:260px"></textarea>
     <small style="color:var(--mut)">Kata dalam kurung kurawal diganti otomatis: {nama} {pria} {wanita} {mempelai} {tanggal} {akad} {resepsi} {link}. Jangan hapus tanda kurung kurawalnya.</small>
     <div style="margin-top:8px"><button class="b o s" id="psR">Kembalikan bawaan</button></div>
    </div>
-   <div class="card"><label class="l" style="margin-top:0">Tampilan link saat dikirim</label><div class="prev"><img id="pvI" alt=""><div><b id="pvT"></b><span id="pvD"></span></div></div></div>
+   <div class="card" id="cPv"><label class="l" style="margin-top:0">Tampilan link saat dikirim</label><div class="prev"><img id="pvI" alt=""><div><b id="pvT"></b><span id="pvD"></span></div></div></div>
    <button class="b" id="setS" style="width:100%">Simpan pengaturan</button>
    <button class="b r" id="out" style="width:100%;margin-top:10px">Keluar</button>
   </div>
@@ -107,7 +108,7 @@ label.l{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercas
 </div>
 <div class="toast" id="toast"></div>
 
-<script src="data/data-undangan.js"></script>
+<script src="data/data-undangan.js?v=pa"></script>
 <script src="js/fb.js"></script>
 <script>
 (function(){
@@ -118,6 +119,7 @@ var HARI=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'],BLN=['Januar
 var pr=D.pria||{},wn=D.wanita||{},ZONA=D.zona||'WIB';
 var NAMA=(pr.panggilan||'')+' & '+(wn.panggilan||'');
 $('#jd').textContent='Undangan '+NAMA;
+function hitungNama(){var w=(S.set&&S.set.urutNama)?S.set.urutNama==='wanita':(D.pihakKlien||D.urutanNama)==='wanita';NAMA=w?(wn.panggilan||'')+' & '+(pr.panggilan||''):(pr.panggilan||'')+' & '+(wn.panggilan||'');$('#jd').textContent='Undangan '+NAMA}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(function(){t.classList.remove('on')},2400)}
 function tgl(s){var p=String(s||'').split('-');if(p.length<3)return '';var d=new Date(+p[0],+p[1]-1,+p[2]);return HARI[d.getDay()]+', '+(+p[2])+' '+BLN[+p[1]-1]+' '+p[0]}
@@ -155,7 +157,7 @@ $('#vLogin').onsubmit=function(e){
 function muat(){
   view('vApp');
   FB.pengaturan().then(function(p){
-    if(p){S.set=p}else{var d={ucapanPublik:D.ucapanPublik!==false,turutTampil:!!D.turutMengundangTampil,rekening1:true,rekening2:true,pesan:''};S.set=d;FB.simpanPengaturan(d).catch(function(){})}
+    if(p){S.set=p}else{var d={ucapanPublik:D.ucapanPublik!==false,turutTampil:!!D.turutMengundangTampil,rekening1:true,rekening2:true,urutNama:(D.pihakKlien||D.urutanNama)==='wanita'?'wanita':'pria',pesan:''};S.set=d;FB.simpanPengaturan(d).catch(function(){})}
     isiSet();
   }).catch(gagal);
   Promise.all([FB.tamuDaftar(),FB.daftarUcapan(true)]).then(function(r){S.tamu=r[0];S.ucapan=r[1];render()}).catch(gagal);
@@ -211,11 +213,26 @@ document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function
   $('#pTamu').classList.toggle('hide',b.dataset.t!=='tamu');$('#pUcapan').classList.toggle('hide',b.dataset.t!=='ucapan');$('#pSet').classList.toggle('hide',b.dataset.t!=='set');
 }});
 
+/* true/false di data-undangan.js > "panelAdmin": tampilkan atau sembunyikan tiap pengaturan di panel ini */
+function panelAdmin(){
+  var P=D.panelAdmin||{};function on(k){var v=P[k];return !(v===false||v===0||(typeof v==='string'&&/^(false|0|tidak|no|off|sembunyi)$/i.test(v.trim())))}
+  function tampil(sel,ok){var e=$(sel);if(e)e.style.display=ok?'':'none'}
+  tampil('#rUp',on('ucapanPublik'));tampil('#rTm',on('turutMengundang'));
+  tampil('#rR1',on('rekening'));tampil('#rR2',on('rekening'));
+  tampil('#rUr',on('urutanNama'));tampil('#cPs',on('pesanWa'));tampil('#cPv',on('pratinjauLink'));
+  var barisAda=['#rUp','#rTm','#rR1','#rR2','#rUr'].some(function(s){var e=$(s);return e&&e.style.display!=='none'&&!e.classList.contains('hide')});
+  tampil('#cSw',barisAda);
+  var ada=barisAda||on('pesanWa')||on('pratinjauLink');
+  var tab=document.querySelector('.tabs button[data-t="set"]');if(tab)tab.style.display=ada?'':'none';
+  tampil('#setS',ada);
+}
 function isiSet(){
   $('#cUp').checked=S.set.ucapanPublik!==false;$('#cTm').checked=!!S.set.turutTampil;$('#cR1').checked=S.set.rekening1!==false;$('#cR2').checked=S.set.rekening2!==false;
+  $('#cUr').value=S.set.urutNama||((D.pihakKlien||D.urutanNama)==='wanita'?'wanita':'pria');hitungNama();
   $('#ps').value=S.set.pesan||DEFAULT;
   $('#rTm').classList.toggle('hide',!(D.turutMengundang&&D.turutMengundang.length));
   var h=(D.hadiah||[]).length;$('#rR1').classList.toggle('hide',h<1);$('#rR2').classList.toggle('hide',h<2);
+  panelAdmin();
   var ak=D.akad||D.resepsi||{},ev2=D.resepsi||D.akad||{};
   $('#pvI').src=BASEURL+'foto/og.jpg';$('#pvT').textContent='Undangan Pernikahan '+NAMA;
   $('#pvD').textContent='Kami mengundang Anda ke pernikahan '+NAMA+' - '+tgl(ak.tanggal)+' di '+(ev2.tempat||'')+'.';
@@ -223,12 +240,12 @@ function isiSet(){
 $('#psR').onclick=function(){$('#ps').value=DEFAULT};
 $('#setS').onclick=function(){
   var p=$('#ps').value.trim();
-  var o={ucapanPublik:$('#cUp').checked,turutTampil:$('#cTm').checked,rekening1:$('#cR1').checked,rekening2:$('#cR2').checked,pesan:p===DEFAULT?'':p};
+  var o={ucapanPublik:$('#cUp').checked,turutTampil:$('#cTm').checked,rekening1:$('#cR1').checked,rekening2:$('#cR2').checked,urutNama:$('#cUr').value,pesan:p===DEFAULT?'':p};
   FB.simpanPengaturan(o).then(function(){
-    S.set=o;
+    S.set=o;hitungNama();
     return FB.pengaturan().catch(function(){return null});
   }).then(function(p){
-    var cocok=p&&p.ucapanPublik===o.ucapanPublik&&p.turutTampil===o.turutTampil&&p.rekening1===o.rekening1&&p.rekening2===o.rekening2;
+    var cocok=p&&p.ucapanPublik===o.ucapanPublik&&p.turutTampil===o.turutTampil&&p.rekening1===o.rekening1&&p.rekening2===o.rekening2&&(p.urutNama||o.urutNama)===o.urutNama;
     toast(cocok?'Pengaturan disimpan dan sudah aktif di undangan':'Tersimpan, tetapi belum terbaca oleh halaman tamu. Periksa Rules Firebase (Tahap 6D).');
   }).catch(gagal);
 };
